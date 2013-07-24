@@ -1,0 +1,19 @@
+{
+    "name": "betacie/mangopay-bundle",
+    "description": "MangoPay Bundle",
+    "require": {
+        "symfony/symfony": "~2.3",
+        "betacie/mangopay-sdk": "dev-master"
+    },
+    "authors": [
+        {
+            "name": "yoye",
+            "email": "y.aparici@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload":     {
+        "psr-0": { "Betacie\\Bundle\\MangoPayBundle": "" }
+    },
+    "target-dir": "Betacie/Bundle/MangoPayBundle",
+}

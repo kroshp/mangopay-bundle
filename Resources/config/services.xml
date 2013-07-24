@@ -1,0 +1,76 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="betacie_mango_pay.client.class">Betacie\MangoPay\MangoPayClient</parameter>
+
+        <parameter key="betacie_mango_pay.message.beneficiary.class">Betacie\MangoPay\Message\BeneficiaryRequest</parameter>
+        <parameter key="betacie_mango_pay.message.contribution.class">Betacie\MangoPay\Message\ContributionRequest</parameter>
+        <parameter key="betacie_mango_pay.message.immediate_contribution.class">Betacie\MangoPay\Message\ImmediateContributionRequest</parameter>
+        <parameter key="betacie_mango_pay.message.operation.class">Betacie\MangoPay\Message\OperationRequest</parameter>
+        <parameter key="betacie_mango_pay.message.payment_card.class">Betacie\MangoPay\Message\PaymentCardRequest</parameter>
+        <parameter key="betacie_mango_pay.message.recurrent_contribution.class">Betacie\MangoPay\Message\RecurrentContributionRequest</parameter>
+        <parameter key="betacie_mango_pay.message.refund.class">Betacie\MangoPay\Message\RefundRequest</parameter>
+        <parameter key="betacie_mango_pay.message.strong_authentication.class">Betacie\MangoPay\Message\StrongAuthenticationRequest</parameter>
+        <parameter key="betacie_mango_pay.message.transfer.class">Betacie\MangoPay\Message\TransferRequest</parameter>
+        <parameter key="betacie_mango_pay.message.user.class">Betacie\MangoPay\Message\UserRequest</parameter>
+        <parameter key="betacie_mango_pay.message.wallet.class">Betacie\MangoPay\Message\WalletRequest</parameter>
+        <parameter key="betacie_mango_pay.message.withdrawal_contribution.class">Betacie\MangoPay\Message\WithdrawalContributionRequest</parameter>
+        <parameter key="betacie_mango_pay.message.withdrawal.class">Betacie\MangoPay\Message\WithdrawalRequest</parameter>
+    </parameters>
+
+    <services>
+
+        <!-- Client -->
+        <service id="betacie_mango_pay.client" class="%betacie_mango_pay.client.class%">
+            <argument>%betacie_mango_pay.partner_id%</argument>
+            <argument>%betacie_mango_pay.private_key_file%</argument>
+            <argument>%betacie_mango_pay.private_key_passphrase%</argument>
+            <argument>%betacie_mango_pay.debug%</argument>
+        </service>
+
+        <!-- Message -->
+        <service id="betacie_mango_pay.message.beneficiary" class="%betacie_mango_pay.message.beneficiary.class%">
+            <argument type="service" id="betacie_mango_pay.client" />
+        </service>
+        <service id="betacie_mango_pay.message.contribution" class="%betacie_mango_pay.message.contribution.class%">
+            <argument type="service" id="betacie_mango_pay.client" />
+        </service>
+        <service id="betacie_mango_pay.message.immediate_contribution" class="%betacie_mango_pay.message.immediate_contribution.class%">
+            <argument type="service" id="betacie_mango_pay.client" />
+        </service>
+        <service id="betacie_mango_pay.message.operation" class="%betacie_mango_pay.message.operation.class%">
+            <argument type="service" id="betacie_mango_pay.client" />
+        </service>
+        <service id="betacie_mango_pay.message.payment_card" class="%betacie_mango_pay.message.payment_card.class%">
+            <argument type="service" id="betacie_mango_pay.client" />
+        </service>
+        <service id="betacie_mango_pay.message.recurrent_contribution" class="%betacie_mango_pay.message.recurrent_contribution.class%">
+            <argument type="service" id="betacie_mango_pay.client" />
+        </service>
+        <service id="betacie_mango_pay.message.refund" class="%betacie_mango_pay.message.refund.class%">
+            <argument type="service" id="betacie_mango_pay.client" />
+        </service>
+        <service id="betacie_mango_pay.message.strong_authentication" class="%betacie_mango_pay.message.strong_authentication.class%">
+            <argument type="service" id="betacie_mango_pay.client" />
+        </service>
+        <service id="betacie_mango_pay.message.transfer" class="%betacie_mango_pay.message.transfer.class%">
+            <argument type="service" id="betacie_mango_pay.client" />
+        </service>
+        <service id="betacie_mango_pay.message.user" class="%betacie_mango_pay.message.user.class%">
+            <argument type="service" id="betacie_mango_pay.client" />
+        </service>
+        <service id="betacie_mango_pay.message.wallet" class="%betacie_mango_pay.message.wallet.class%">
+            <argument type="service" id="betacie_mango_pay.client" />
+        </service>
+        <service id="betacie_mango_pay.message.withdrawal_contribution" class="%betacie_mango_pay.message.withdrawal_contribution.class%">
+            <argument type="service" id="betacie_mango_pay.client" />
+        </service>
+        <service id="betacie_mango_pay.message.withdrawal" class="%betacie_mango_pay.message.withdrawal.class%">
+            <argument type="service" id="betacie_mango_pay.client" />
+        </service>
+    </services>
+</container>
