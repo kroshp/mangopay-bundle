@@ -15,5 +15,5 @@
     "autoload":     {
         "psr-0": { "Betacie\\Bundle\\MangoPayBundle": "" }
     },
-    "target-dir": "Betacie/Bundle/MangoPayBundle",
+    "target-dir": "Betacie/Bundle/MangoPayBundle"
 }
