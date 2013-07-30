@@ -14,6 +14,7 @@ use Symfony\Component\DependencyInjection\Loader;
  */
 class BetacieMangoPayExtension extends Extension
 {
+
     /**
      * {@inheritDoc}
      */
@@ -26,7 +27,11 @@ class BetacieMangoPayExtension extends Extension
             $container->setParameter('betacie_mango_pay.' . $key, $config[$key]);
         }
 
-        $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
-        $loader->load('services.xml');
+        $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
+
+        foreach (array('services', 'orm') as $name) {
+            $loader->load($name . '.xml');
+        }
     }
+
 }

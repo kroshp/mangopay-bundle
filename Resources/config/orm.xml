@@ -1,0 +1,47 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="betacie_mango_pay.beneficiary_manager.class">Betacie\Bundle\MangoPayBundle\Model\BeneficiaryManager</parameter>
+        <parameter key="betacie_mango_pay.immediate_contribution_manager.class">Betacie\Bundle\MangoPayBundle\Model\ImmediateContributionManager</parameter>
+        <parameter key="betacie_mango_pay.payment_card_manager.class">Betacie\Bundle\MangoPayBundle\Model\PaymentCardManager</parameter>
+        <parameter key="betacie_mango_pay.transfer_manager.class">Betacie\Bundle\MangoPayBundle\Model\TransferManager</parameter>
+        <parameter key="betacie_mango_pay.user_manager.class">Betacie\Bundle\MangoPayBundle\Model\UserManager</parameter>
+        <parameter key="betacie_mango_pay.wallet_manager.class">Betacie\Bundle\MangoPayBundle\Model\WalletManager</parameter>
+        <parameter key="betacie_mango_pay.withdrawal_manager.class">Betacie\Bundle\MangoPayBundle\Model\WithdrawalManager</parameter>
+    </parameters>
+
+    <services>
+        <service id="betacie_mango_pay.beneficiary_manager" class="%betacie_mango_pay.beneficiary_manager.class%">
+            <argument type="service" id="betacie_mango_pay.message.beneficiary" />
+            <argument type="service" id="doctrine.orm.entity_manager" />
+        </service>
+        <service id="betacie_mango_pay.immediate_contribution_manager" class="%betacie_mango_pay.immediate_contribution_manager.class%">
+            <argument type="service" id="betacie_mango_pay.message.immediate_contribution" />
+            <argument type="service" id="doctrine.orm.entity_manager" />
+        </service>
+        <service id="betacie_mango_pay.payment_card_manager" class="%betacie_mango_pay.payment_card_manager.class%">
+            <argument type="service" id="betacie_mango_pay.message.payment_card" />
+            <argument type="service" id="doctrine.orm.entity_manager" />
+        </service>
+        <service id="betacie_mango_pay.transfer_manager" class="%betacie_mango_pay.transfer_manager.class%">
+            <argument type="service" id="betacie_mango_pay.message.transfer" />
+            <argument type="service" id="doctrine.orm.entity_manager" />
+        </service>
+        <service id="betacie_mango_pay.user_manager" class="%betacie_mango_pay.user_manager.class%">
+            <argument type="service" id="betacie_mango_pay.message.user" />
+            <argument type="service" id="doctrine.orm.entity_manager" />
+        </service>
+        <service id="betacie_mango_pay.wallet_manager" class="%betacie_mango_pay.wallet_manager.class%">
+            <argument type="service" id="betacie_mango_pay.message.wallet" />
+            <argument type="service" id="doctrine.orm.entity_manager" />
+        </service>
+        <service id="betacie_mango_pay.withdrawal_manager" class="%betacie_mango_pay.withdrawal_manager.class%">
+            <argument type="service" id="betacie_mango_pay.message.withdrawal" />
+            <argument type="service" id="doctrine.orm.entity_manager" />
+        </service>
+    </services>
+</container>

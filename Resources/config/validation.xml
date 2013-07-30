@@ -3,36 +3,59 @@
                     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                     xsi:schemaLocation="http://symfony.com/schema/dic/constraint-mapping http://symfony.com/schema/dic/constraint-mapping/constraint-mapping-1.0.xsd">
 
-    <class name="Betacie\Bundle\MangoPayBundle\Model\User">
+    <class name="Betacie\Bundle\MangoPayBundle\Entity\User">
+    
+        <!-- Validation Groups kyc as "Know Your Customer" (http://en.wikipedia.org/wiki/Know_your_customer) -->
+    
         <property name="email">
-            <constraint name="NotBlank" />
-            <constraint name="Email" />
+            <constraint name="NotBlank">
+                <option name="groups">
+                    <value>KYC</value>
+                </option>
+            </constraint>
         </property>
         <property name="firstName">
-            <constraint name="NotBlank" />
+            <constraint name="NotBlank">
+                <option name="groups">
+                    <value>KYC</value>
+                </option>
+            </constraint>
         </property>
         <property name="lastName">
-            <constraint name="NotBlank" />
+            <constraint name="NotBlank">
+                <option name="groups">
+                    <value>KYC</value>
+                </option>
+            </constraint>
         </property>
         <property name="ip">
-            <constraint name="NotBlank" />
-            <constraint name="Ip">
-                <option name="version">all</option>
+            <constraint name="NotBlank">
+                <option name="groups">
+                    <value>KYC</value>
+                </option>
             </constraint>
         </property>
         <property name="birthday">
-            <constraint name="NotBlank" />
-            <constraint name="Date" />
+            <constraint name="NotBlank">
+                <option name="groups">
+                    <value>KYC</value>
+                </option>
+            </constraint>
         </property>
         <property name="nationality">
-            <constraint name="NotBlank" />
-            <constraint name="Country" />
+            <constraint name="NotBlank">
+                <option name="groups">
+                    <value>KYC</value>
+                </option>
+            </constraint>
         </property>
         <property name="personType">
-            <constraint name="NotBlank" />
-            <constraint name="Choice" >
-                <option name="callback">getAvailablePersonTypes</option>
+            <constraint name="NotBlank">
+                <option name="groups">
+                    <value>KYC</value>
+                </option>
             </constraint>
         </property>
     </class>
+
 </constraint-mapping>

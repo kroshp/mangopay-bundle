@@ -1,12 +1,13 @@
 <?php
 
-namespace Betacie\Bundle\MangoPayBundle\Model;
+namespace Betacie\Bundle\MangoPayBundle\Entity;
 
 use Betacie\MangoPay\Message\UserRequest;
 
 class User
 {
 
+    protected $id;
     protected $email;
     protected $firstName;
     protected $lastName;
@@ -18,6 +19,11 @@ class User
     protected $canRegisterMeanOfPayment;
     protected $hasRegisteredMeansOfPayment;
     protected $mangoPayId;
+
+    public function getId()
+    {
+        return $this->id;
+    }
 
     public function getEmail()
     {
@@ -166,7 +172,7 @@ class User
         return $this->mangoPayId;
     }
 
-    public function setId($mangoPayId)
+    public function setMangoPayId($mangoPayId)
     {
         $this->mangoPayId = $mangoPayId;
 
