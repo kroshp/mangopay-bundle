@@ -21,7 +21,7 @@ class WithdrawalManager
      */
     protected $em;
 
-    function __construct(WithdrawalRequest $withdrawalRequest, EntityManager $em)
+    public function __construct(WithdrawalRequest $withdrawalRequest, EntityManager $em)
     {
         $this->withdrawalRequest = $withdrawalRequest;
         $this->em = $em;
@@ -34,7 +34,7 @@ class WithdrawalManager
         } catch (\Exception $e) {
             var_dump($e->getResponse()->getBody(true));exit;
         }
-        
+
         $withdrawal = $this->denormalize($response);
 
         $this->em->persist($withdrawal);

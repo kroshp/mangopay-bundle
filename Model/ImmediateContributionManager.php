@@ -2,9 +2,9 @@
 
 namespace Betacie\Bundle\MangoPayBundle\Model;
 
-use Betacie\MangoPay\Message\ImmediateContributionRequest;
 use Betacie\Bundle\MangoPayBundle\Entity\ImmediateContribution;
 use Betacie\Bundle\MangoPayBundle\ResponseBag;
+use Betacie\MangoPay\Message\ImmediateContributionRequest;
 use Doctrine\ORM\EntityManager;
 use Guzzle\Http\Message\Response;
 

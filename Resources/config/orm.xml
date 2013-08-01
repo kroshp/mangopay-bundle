@@ -8,6 +8,7 @@
         <parameter key="betacie_mango_pay.beneficiary_manager.class">Betacie\Bundle\MangoPayBundle\Model\BeneficiaryManager</parameter>
         <parameter key="betacie_mango_pay.immediate_contribution_manager.class">Betacie\Bundle\MangoPayBundle\Model\ImmediateContributionManager</parameter>
         <parameter key="betacie_mango_pay.payment_card_manager.class">Betacie\Bundle\MangoPayBundle\Model\PaymentCardManager</parameter>
+        <parameter key="betacie_mango_pay.refund_manager.class">Betacie\Bundle\MangoPayBundle\Model\RefundManager</parameter>
         <parameter key="betacie_mango_pay.transfer_manager.class">Betacie\Bundle\MangoPayBundle\Model\TransferManager</parameter>
         <parameter key="betacie_mango_pay.user_manager.class">Betacie\Bundle\MangoPayBundle\Model\UserManager</parameter>
         <parameter key="betacie_mango_pay.wallet_manager.class">Betacie\Bundle\MangoPayBundle\Model\WalletManager</parameter>
@@ -25,6 +26,10 @@
         </service>
         <service id="betacie_mango_pay.payment_card_manager" class="%betacie_mango_pay.payment_card_manager.class%">
             <argument type="service" id="betacie_mango_pay.message.payment_card" />
+            <argument type="service" id="doctrine.orm.entity_manager" />
+        </service>
+        <service id="betacie_mango_pay.refund_manager" class="%betacie_mango_pay.refund_manager.class%">
+            <argument type="service" id="betacie_mango_pay.message.refund" />
             <argument type="service" id="doctrine.orm.entity_manager" />
         </service>
         <service id="betacie_mango_pay.transfer_manager" class="%betacie_mango_pay.transfer_manager.class%">

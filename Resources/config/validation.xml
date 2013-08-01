@@ -4,9 +4,9 @@
                     xsi:schemaLocation="http://symfony.com/schema/dic/constraint-mapping http://symfony.com/schema/dic/constraint-mapping/constraint-mapping-1.0.xsd">
 
     <class name="Betacie\Bundle\MangoPayBundle\Entity\User">
-    
+
         <!-- Validation Groups kyc as "Know Your Customer" (http://en.wikipedia.org/wiki/Know_your_customer) -->
-    
+
         <property name="email">
             <constraint name="NotBlank">
                 <option name="groups">
