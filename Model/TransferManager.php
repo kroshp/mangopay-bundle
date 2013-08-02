@@ -3,6 +3,7 @@
 namespace Betacie\Bundle\MangoPayBundle\Model;
 
 use Betacie\Bundle\MangoPayBundle\Entity\Transfer;
+use Betacie\Bundle\MangoPayBundle\Entity\TransferRefund;
 use Betacie\Bundle\MangoPayBundle\ResponseBag;
 use Betacie\MangoPay\Message\TransferRequest;
 use Doctrine\ORM\EntityManager;
@@ -36,6 +37,30 @@ class TransferManager
         $this->em->flush();
 
         return $transfer;
+    }
+
+    public function refund(Transfer $transfer)
+    {
+        $response = $this->transferRequest->refund(array(
+            'TransferID' => $transfer->getMangoPayId(),
+            'UserID' => $transfer->getPayerId(),
+        ));
+        $bag = new ResponseBag($response->json());
+
+        $refund = new TransferRefund();
+        $refund
+            ->setCreationDate($bag->get('CreationDate'))
+            ->setMangoPayId($bag->get('ID'))
+            ->setTag($bag->get('Tag'))
+            ->setTransferId($bag->get('TransferID'))
+            ->setUpdateDate($bag->get('UpdateDate'))
+            ->setUserId($bag->get('UserID'))
+        ;
+
+        $this->em->persist($refund);
+        $this->em->flush();
+
+        return $refund;
     }
 
     public function denormalize(Response $response)
