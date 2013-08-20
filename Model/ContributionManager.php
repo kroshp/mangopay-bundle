@@ -2,49 +2,49 @@
 
 namespace Betacie\Bundle\MangoPayBundle\Model;
 
-use Betacie\Bundle\MangoPayBundle\Entity\ImmediateContribution;
+use Betacie\Bundle\MangoPayBundle\Entity\Contribution;
 use Betacie\Bundle\MangoPayBundle\ResponseBag;
-use Betacie\MangoPay\Message\ImmediateContributionRequest;
+use Betacie\MangoPay\Message\ContributionRequest;
 use Doctrine\ORM\EntityManager;
 use Guzzle\Http\Message\Response;
 
-class ImmediateContributionManager
+class ContributionManager
 {
 
     /**
-     * @var ImmediateContributionRequest
+     * @var ContributionRequest
      */
-    protected $immediateContributionRequest;
+    protected $contributionRequest;
 
     /**
      * @var EntityManager
      */
     protected $em;
 
-    public function __construct(ImmediateContributionRequest $immediateContributionRequest, EntityManager $em)
+    public function __construct(ContributionRequest $contributionRequest, EntityManager $em)
     {
-        $this->immediateContributionRequest = $immediateContributionRequest;
-        $this->em                           = $em;
+        $this->contributionRequest = $contributionRequest;
+        $this->em                  = $em;
     }
 
     public function create(array $parameters)
     {
-        $response = $this->immediateContributionRequest->create($parameters);
+        $response = $this->contributionRequest->create($parameters);
 
-        $immediateContribution = $this->denormalize($response);
+        $contribution = $this->denormalize($response);
 
-        $this->em->persist($immediateContribution);
+        $this->em->persist($contribution);
         $this->em->flush();
 
-        return $immediateContribution;
+        return $contribution;
     }
 
     public function denormalize(Response $response)
     {
         $bag = new ResponseBag($response->json());
 
-        $immediateContribution = new ImmediateContribution();
-        $immediateContribution
+        $contribution = new Contribution();
+        $contribution
             ->setAmount($bag->get('Amount'))
             ->setAnswerCode($bag->get('AnswerCode'))
             ->setAnswerMessage($bag->get('AnswerMessage'))
@@ -60,14 +60,17 @@ class ImmediateContributionManager
             ->setUpdateDate($bag->get('UpdateDate'))
             ->setUserId($bag->get('UserID'))
             ->setWalletId($bag->get('WalletID'))
+            ->setPaymentUrl($bag->get('PaymentURL'))
+            ->setTemplateUrl($bag->get('TemplateURL'))
+            ->setReturnUrl($bag->get('ReturnURL'))
         ;
 
-        return $immediateContribution;
+        return $contribution;
     }
 
     private function getRepository()
     {
-        return $this->em->getRepository('Betacie\\Bundle\\MangoPayBundle\\Entity\\ImmediateContribution');
+        return $this->em->getRepository('Betacie\\Bundle\\MangoPayBundle\\Entity\\Contribution');
     }
 
 }

@@ -21,7 +21,7 @@ class PaymentCardManager
     public function __construct(PaymentCardRequest $paymentCardRequest, EntityManager $em)
     {
         $this->paymentCardRequest = $paymentCardRequest;
-        $this->em = $em;
+        $this->em                 = $em;
     }
 
     public function find($paymentCardId)

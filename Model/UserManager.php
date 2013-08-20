@@ -24,13 +24,13 @@ class UserManager
     public function __construct(UserRequest $userRequest, EntityManager $em)
     {
         $this->userRequest = $userRequest;
-        $this->em = $em;
+        $this->em          = $em;
     }
 
     public function create(array $parameters)
     {
         $response = $this->userRequest->create($parameters);
-        $user = $this->denormalize($response);
+        $user     = $this->denormalize($response);
 
         $this->em->persist($user);
         $this->em->flush();
@@ -78,13 +78,13 @@ class UserManager
     public function normalize(User $user)
     {
         return array(
-            'Tag' => $user->getTag(),
-            'Email' => $user->getEmail(),
-            'FirstName' => $user->getFirstName(),
-            'LastName' => $user->getLastName(),
+            'Tag'                      => $user->getTag(),
+            'Email'                    => $user->getEmail(),
+            'FirstName'                => $user->getFirstName(),
+            'LastName'                 => $user->getLastName(),
             'CanRegisterMeanOfPayment' => $user->getCanRegisterMeanOfPayment(),
-            'Birthday' => $user->getBirthday(),
-            'Nationality' => $user->getNationality(),
+            'Birthday'                 => $user->getBirthday(),
+            'Nationality'              => $user->getNationality(),
         );
     }
 

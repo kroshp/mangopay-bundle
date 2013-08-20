@@ -25,7 +25,7 @@ class TransferManager
     public function __construct(TransferRequest $transferRequest, EntityManager $em)
     {
         $this->transferRequest = $transferRequest;
-        $this->em = $em;
+        $this->em              = $em;
     }
 
     public function create(array $parameters)
@@ -43,9 +43,9 @@ class TransferManager
     {
         $response = $this->transferRequest->refund(array(
             'TransferID' => $transfer->getMangoPayId(),
-            'UserID' => $transfer->getPayerId(),
+            'UserID'     => $transfer->getPayerId(),
         ));
-        $bag = new ResponseBag($response->json());
+        $bag      = new ResponseBag($response->json());
 
         $refund = new TransferRefund();
         $refund

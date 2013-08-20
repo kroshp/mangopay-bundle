@@ -4,6 +4,7 @@ namespace Betacie\Bundle\MangoPayBundle;
 
 class ResponseBag
 {
+
     protected $parameters;
 
     public function __construct(array $parameters = array())
@@ -15,4 +16,5 @@ class ResponseBag
     {
         return array_key_exists($name, $this->parameters) ? $this->parameters[$name] : $default;
     }
+
 }

@@ -24,12 +24,12 @@ class BeneficiaryManager
     public function __construct(BeneficiaryRequest $beneficiaryRequest, EntityManager $em)
     {
         $this->beneficiaryRequest = $beneficiaryRequest;
-        $this->em = $em;
+        $this->em                 = $em;
     }
 
     public function create(array $parameters)
     {
-        $response = $this->beneficiaryRequest->create($parameters);
+        $response    = $this->beneficiaryRequest->create($parameters);
         $beneficiary = $this->denormalize($response);
 
         $this->em->persist($beneficiary);

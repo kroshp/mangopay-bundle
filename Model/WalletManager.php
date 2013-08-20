@@ -24,7 +24,7 @@ class WalletManager
     public function __construct(WalletRequest $walletRequest, EntityManager $em)
     {
         $this->walletRequest = $walletRequest;
-        $this->em = $em;
+        $this->em            = $em;
     }
 
     /**
@@ -36,7 +36,7 @@ class WalletManager
     public function create(array $parameters)
     {
         $response = $this->walletRequest->create($parameters);
-        $wallet = $this->denormalize($response);
+        $wallet   = $this->denormalize($response);
 
         $this->em->persist($wallet);
         $this->em->flush();

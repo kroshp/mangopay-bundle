@@ -4,6 +4,7 @@ namespace Betacie\Bundle\MangoPayBundle\Entity;
 
 class Wallet
 {
+
     protected $id;
     protected $mangoPayId;
     protected $tag;

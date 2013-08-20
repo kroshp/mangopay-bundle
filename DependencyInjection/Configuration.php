@@ -19,14 +19,14 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('betacie_mango_pay');
+        $rootNode    = $treeBuilder->root('betacie_mango_pay');
 
         $rootNode
             ->children()
-                ->scalarNode('partner_id')->isRequired()->end()
-                ->scalarNode('private_key_file')->isRequired()->end()
-                ->scalarNode('private_key_passphrase')->isRequired()->end()
-                ->scalarNode('debug')->isRequired()->end()
+            ->scalarNode('partner_id')->isRequired()->end()
+            ->scalarNode('private_key_file')->isRequired()->end()
+            ->scalarNode('private_key_passphrase')->isRequired()->end()
+            ->scalarNode('debug')->isRequired()->end()
             ->end()
         ;
 

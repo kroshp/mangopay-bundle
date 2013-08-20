@@ -24,13 +24,13 @@ class RefundManager
     public function __construct(RefundRequest $refundRequest, EntityManager $em)
     {
         $this->refundRequest = $refundRequest;
-        $this->em = $em;
+        $this->em            = $em;
     }
 
     public function create(array $parameters)
     {
         $response = $this->refundRequest->create($parameters);
-        $refund = $this->denormalize($response);
+        $refund   = $this->denormalize($response);
 
         $this->em->persist($refund);
         $this->em->flush();

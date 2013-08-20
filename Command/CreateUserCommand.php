@@ -38,14 +38,14 @@ class CreateUserCommand extends ContainerAwareCommand
         $message = $this->getContainer()->get('betacie_mango_pay.message.user');
 
         $response = $message->create(array(
-            'FirstName' => $input->getArgument('first-name'),
-            'LastName' => $input->getArgument('last-name'),
-            'Email' => $input->getArgument('email'),
+            'FirstName'   => $input->getArgument('first-name'),
+            'LastName'    => $input->getArgument('last-name'),
+            'Email'       => $input->getArgument('email'),
             'Nationality' => $input->getArgument('nationality'),
-            'Birthday' => $birthday->getTimestamp(),
-            'IP' => $input->getArgument('ip'),
-            'PersonType' => $input->getArgument('person-type'),
-            'Tag' => $input->getOption('tag'),
+            'Birthday'    => $birthday->getTimestamp(),
+            'IP'          => $input->getArgument('ip'),
+            'PersonType'  => $input->getArgument('person-type'),
+            'Tag'         => $input->getOption('tag'),
         ));
 
         $data = $response->json();
