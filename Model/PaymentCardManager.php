@@ -32,7 +32,10 @@ class PaymentCardManager
 
     public function delete(PaymentCard $paymentCard)
     {
-        return $this->paymentCardRequest->delete($paymentCard->getMangoPayId());
+        $this->paymentCardRequest->delete($paymentCard->getMangoPayId());
+
+        $this->em->remove($paymentCard);
+        $this->em->flush();
     }
 
     private function getRepository()
