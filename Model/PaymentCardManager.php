@@ -2,6 +2,7 @@
 
 namespace Betacie\Bundle\MangoPayBundle\Model;
 
+use Betacie\Bundle\MangoPayBundle\Entity\PaymentCard;
 use Betacie\MangoPay\Message\PaymentCardRequest;
 use Doctrine\ORM\EntityManager;
 
@@ -27,6 +28,11 @@ class PaymentCardManager
     public function find($paymentCardId)
     {
         return $this->getRepository()->find($paymentCardId);
+    }
+
+    public function delete(PaymentCard $paymentCard)
+    {
+        return $this->paymentCardRequest->delete($paymentCard->getMangoPayId());
     }
 
     private function getRepository()
