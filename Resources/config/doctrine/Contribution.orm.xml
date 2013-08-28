@@ -21,7 +21,7 @@
         <field name="error" column="error" type="text" nullable="true" />
         <field name="paymentCardId" column="payment_card_id" type="integer" />
         <field name="type" column="type" type="string" length="255" />
-        <field name="answerCode" column="answer_code" type="integer" nullable="true" />
+        <field name="answerCode" column="answer_code" type="string" length="255" nullable="true" />
         <field name="answerMessage" column="answer_message" type="text" nullable="true" />
         <field name="paymentUrl" column="payment_url" type="string" length="255" />
         <field name="templateUrl" column="template_url" type="string" length="255" nullable="true" />
