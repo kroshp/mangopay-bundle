@@ -20,7 +20,7 @@ class NotificationController extends Controller
         if (defined($name)) {
             $dispatcher->dispatch(constant($name), new MangoPayEvent($data));
         }
-
+        
         return new Response('200 OK');
     }
 

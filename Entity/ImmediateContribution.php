@@ -2,7 +2,7 @@
 
 namespace Betacie\Bundle\MangoPayBundle\Entity;
 
-class ImmediateContribution
+class ImmediateContribution implements ContributionInterface
 {
 
     protected $id;

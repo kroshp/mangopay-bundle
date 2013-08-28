@@ -2,7 +2,7 @@
 
 namespace Betacie\Bundle\MangoPayBundle\Entity;
 
-class Contribution
+class Contribution implements ContributionInterface
 {
 
     protected $id;
