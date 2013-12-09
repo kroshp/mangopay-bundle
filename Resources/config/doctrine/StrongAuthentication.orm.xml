@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                  http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity name="Betacie\Bundle\MangoPayBundle\Entity\StrongAuthentication" table="mango_pay_strong_authentication">
+        <id name="id" type="integer" column="id">
+            <generator strategy="AUTO" />
+        </id>
+        <field name="mangoPayId" column="mango_pay_id" type="integer" />
+        <field name="tag" column="tag" type="string" length="255" nullable="true" />
+        <field name="creationDate" column="creation_date" type="integer" />
+        <field name="updateDate" column="update_date" type="integer" />
+        <field name="userId" column="user_id" type="integer" />
+        <field name="beneficiaryId" column="beneficiary_id" type="integer" />
+        <field name="urlRequest" column="url_request" type="string" length="255" />
+        <field name="isDocumentsTransmitted" column="is_documents_transmitted" type="boolean" />
+        <field name="isCompleted" column="is_completed" type="boolean" />
+        <field name="isSucceeded" column="is_succeeded" type="boolean" />
+        <field name="message" column="message" type="text" nullable="true" />
+    </entity>
+
+</doctrine-mapping>

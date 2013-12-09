@@ -39,11 +39,26 @@ class ContributionManager
         return $contribution;
     }
 
-    public function denormalize(Response $response)
+    public function get(Contribution $contribution)
+    {
+        $response = $this->contributionRequest->fetch($contribution->getMangoPayId());
+
+        $contribution = $this->denormalize($response, $contribution);
+
+        $this->em->persist($contribution);
+        $this->em->flush();
+
+        return $contribution;
+    }
+
+    public function denormalize(Response $response, Contribution $contribution = null)
     {
         $bag = new ResponseBag($response->json());
 
-        $contribution = new Contribution();
+        if (null === $contribution) {
+            $contribution = new Contribution();
+        }
+
         $contribution
             ->setAmount($bag->get('Amount'))
             ->setAnswerCode($bag->get('AnswerCode'))
