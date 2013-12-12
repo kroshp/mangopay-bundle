@@ -4,8 +4,7 @@ namespace Betacie\Bundle\MangoPayBundle\Entity;
 
 use Betacie\MangoPay\Message\UserRequest;
 
-class User
-{
+class User {
 
     protected $id;
     protected $email;
@@ -19,164 +18,173 @@ class User
     protected $canRegisterMeanOfPayment;
     protected $hasRegisteredMeansOfPayment;
     protected $mangoPayId;
+    protected $paymentCards;
 
-    public function getId()
-    {
+    public function __construct() {
+        $this->paymentCards = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    public function getId() {
         return $this->id;
     }
 
-    public function getEmail()
-    {
+    public function getEmail() {
         return $this->email;
     }
 
-    public function setEmail($email)
-    {
+    public function setEmail($email) {
         $this->email = $email;
 
         return $this;
     }
 
-    public function getFirstName()
-    {
+    public function getFirstName() {
         return $this->firstName;
     }
 
-    public function setFirstName($firstName)
-    {
+    public function setFirstName($firstName) {
         $this->firstName = $firstName;
 
         return $this;
     }
 
-    public function getLastName()
-    {
+    public function getLastName() {
         return $this->lastName;
     }
 
-    public function setLastName($lastName)
-    {
+    public function setLastName($lastName) {
         $this->lastName = $lastName;
 
         return $this;
     }
 
-    public function getIp()
-    {
+    public function getIp() {
         return $this->ip;
     }
 
-    public function setIp($ip)
-    {
+    public function setIp($ip) {
         $this->ip = $ip;
 
         return $this;
     }
 
-    public function getBirthday()
-    {
+    public function getBirthday() {
         return $this->birthday;
     }
 
-    public function setBirthday($birthday)
-    {
+    public function setBirthday($birthday) {
         $this->birthday = $birthday;
 
         return $this;
     }
 
-    public function getNationality()
-    {
+    public function getNationality() {
         return $this->nationality;
     }
 
-    public function setNationality($nationality)
-    {
+    public function setNationality($nationality) {
         $this->nationality = $nationality;
 
         return $this;
     }
 
-    public function getPersonType()
-    {
+    public function getPersonType() {
         return $this->personType;
     }
 
-    public function setPersonType($personType)
-    {
+    public function setPersonType($personType) {
         $this->personType = $personType;
 
         return $this;
     }
 
-    public function setNaturalPersonType()
-    {
+    public function setNaturalPersonType() {
         $this->personType = UserRequest::NATURAL_PERSON;
 
         return $this;
     }
 
-    public function setLegalPersonalityType()
-    {
+    public function setLegalPersonalityType() {
         $this->personType = UserRequest::LEGAL_PERSONALITY;
 
         return $this;
     }
 
-    public static function getAvailablePersonTypes()
-    {
+    public static function getAvailablePersonTypes() {
         return array(
             UserRequest::LEGAL_PERSONALITY,
             UserRequest::NATURAL_PERSON,
         );
     }
 
-    public function getTag()
-    {
+    public function getTag() {
         return $this->tag;
     }
 
-    public function setTag($tag)
-    {
+    public function setTag($tag) {
         $this->tag = $tag;
 
         return $this;
     }
 
-    public function getCanRegisterMeanOfPayment()
-    {
+    public function getCanRegisterMeanOfPayment() {
         return $this->canRegisterMeanOfPayment;
     }
 
-    public function setCanRegisterMeanOfPayment($canRegisterMeanOfPayment)
-    {
+    public function setCanRegisterMeanOfPayment($canRegisterMeanOfPayment) {
         $this->canRegisterMeanOfPayment = $canRegisterMeanOfPayment;
 
         return $this;
     }
 
-    public function getHasRegisteredMeansOfPayment()
-    {
+    public function getHasRegisteredMeansOfPayment() {
         return $this->hasRegisteredMeansOfPayment;
     }
 
-    public function setHasRegisteredMeansOfPayment($hasRegisteredMeansOfPayment)
-    {
+    public function setHasRegisteredMeansOfPayment($hasRegisteredMeansOfPayment) {
         $this->hasRegisteredMeansOfPayment = $hasRegisteredMeansOfPayment;
 
         return $this;
     }
 
-    public function getMangoPayId()
-    {
+    public function getMangoPayId() {
         return $this->mangoPayId;
     }
 
-    public function setMangoPayId($mangoPayId)
-    {
+    public function setMangoPayId($mangoPayId) {
         $this->mangoPayId = $mangoPayId;
 
         return $this;
+    }
+
+    /**
+     * Add PaymentCard
+     *
+     * @param PaymentCard $paymentCard
+     * @return User
+     */
+    public function addPaymentCard(PaymentCard $paymentCard) {
+        $this->paymentCards[] = $paymentCard;
+
+        return $this;
+    }
+
+    /**
+     * Remove PaymentCard
+     *
+     * @param PaymentCard $paymentCard
+     */
+    public function removePaymentCard(PaymentCard $paymentCard) {
+        $this->paymentCards->removeElement($paymentCard);
+    }
+
+    /**
+     * Get paymentCards
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getPaymentCards() {
+        return $this->paymentCards;
     }
 
 }
