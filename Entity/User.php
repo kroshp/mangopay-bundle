@@ -19,9 +19,11 @@ class User {
     protected $hasRegisteredMeansOfPayment;
     protected $mangoPayId;
     protected $paymentCards;
+    protected $immediateContributions;
 
     public function __construct() {
         $this->paymentCards = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->immediateContributions = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     public function getId() {
@@ -185,6 +187,36 @@ class User {
      */
     public function getPaymentCards() {
         return $this->paymentCards;
+    }
+
+    /**
+     * Add ImmediateContribution
+     *
+     * @param ImmediateContribution $immediateContribution
+     * @return User
+     */
+    public function addImmediateContribution(ImmediateContribution $immediateContribution) {
+        $this->immediateContributions[] = $immediateContribution;
+
+        return $this;
+    }
+
+    /**
+     * Remove ImmediateContribution
+     *
+     * @param ImmediateContribution $immediateContribution
+     */
+    public function removeImmediateContribution(ImmediateContribution $immediateContribution) {
+        $this->immediateContributions->removeElement($immediateContribution);
+    }
+
+    /**
+     * Get ImmediateContributions
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getImmediateContributions() {
+        return $this->immediateContributions;
     }
 
 }

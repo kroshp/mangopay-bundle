@@ -34,17 +34,22 @@ class PaymentCardManager {
     public function createEntity($paymentCardID) {
         $response = $this->paymentCardRequest->fetch($paymentCardID);
         $paymentCard = $this->denormalize($response);
-        $user = $this->getUserRepository()->findOneByMangoPayId($paymentCard->getOwnerId());
-        
-        $paymentCard->setUser($user);
-        $this->em->persist($paymentCard);
-        $this->em->flush();
+        /* Card setted */
+      
+        if ($paymentCard->getCardNumber()) {
+            $user = $this->getUserRepository()->findOneByMangoPayId($paymentCard->getOwnerId());
+            $paymentCard->setUser($user);
+            $this->em->persist($paymentCard);
+            $this->em->flush();
+        }
+
 
         return $paymentCard;
     }
 
     public function denormalize(Response $response) {
         $bag = new ResponseBag($response->json());
+
         $paymentCard = new PaymentCard();
 
         $paymentCard

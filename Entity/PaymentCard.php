@@ -13,6 +13,11 @@ class PaymentCard {
     protected $templateURL;
     protected $returnURL;
     protected $user;
+    protected $immediateContributions;
+
+    public function __construct() {
+        $this->immediateContributions = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     public function getId() {
         return $this->id;
@@ -96,6 +101,36 @@ class PaymentCard {
         $this->user = $user;
 
         return $this;
+    }
+
+    /**
+     * Add ImmediateContribution
+     *
+     * @param ImmediateContribution $immediateContribution
+     * @return User
+     */
+    public function addImmediateContribution(ImmediateContribution $immediateContribution) {
+        $this->immediateContributions[] = $immediateContribution;
+
+        return $this;
+    }
+
+    /**
+     * Remove ImmediateContribution
+     *
+     * @param ImmediateContribution $immediateContribution
+     */
+    public function removeImmediateContribution(ImmediateContribution $immediateContribution) {
+        $this->immediateContributions->removeElement($immediateContribution);
+    }
+
+    /**
+     * Get ImmediateContributions
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getImmediateContributions() {
+        return $this->immediateContributions;
     }
 
 }

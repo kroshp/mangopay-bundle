@@ -30,7 +30,7 @@ class ImmediateContributionManager
     public function create(array $parameters)
     {
         $response = $this->immediateContributionRequest->create($parameters);
-
+        
         $immediateContribution = $this->denormalize($response);
 
         $this->em->persist($immediateContribution);
@@ -42,7 +42,7 @@ class ImmediateContributionManager
     public function denormalize(Response $response)
     {
         $bag = new ResponseBag($response->json());
-
+        
         $immediateContribution = new ImmediateContribution();
         $immediateContribution
             ->setAmount($bag->get('Amount'))
