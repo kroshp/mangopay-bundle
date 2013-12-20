@@ -8,7 +8,7 @@
     <many-to-one field="user" target-entity="User" inversed-by="paymentCards">
       <join-column name="mango_pay_user_id" referenced-column-name="id" />
     </many-to-one>
-    <one-to-many field="immediateContributions" target-entity="immediateContribution" mapped-by="paymentCard" />
+    <one-to-many field="immediateContributions" target-entity="ImmediateContribution" mapped-by="paymentCard" />
    
     <id name="id" type="integer" column="id">
       <generator strategy="AUTO" />

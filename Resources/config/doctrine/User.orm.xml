@@ -6,7 +6,7 @@
 
     <entity name="Betacie\Bundle\MangoPayBundle\Entity\User" table="mango_pay_user">
         <one-to-many field="paymentCards" target-entity="PaymentCard" mapped-by="user" />
-        <one-to-many field="immediateContributions" target-entity="immediateContribution" mapped-by="user" />
+        <one-to-many field="immediateContributions" target-entity="ImmediateContribution" mapped-by="user" />
     
         <id name="id" type="integer" column="id">
             <generator strategy="AUTO" />
