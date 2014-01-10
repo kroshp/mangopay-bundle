@@ -20,10 +20,12 @@ class User {
     protected $mangoPayId;
     protected $paymentCards;
     protected $immediateContributions;
+    protected $beneficiaries;
 
     public function __construct() {
         $this->paymentCards = new \Doctrine\Common\Collections\ArrayCollection();
         $this->immediateContributions = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->beneficiaries = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     public function getId() {
@@ -219,4 +221,33 @@ class User {
         return $this->immediateContributions;
     }
 
+    /**
+     * Add Beneficiary
+     *
+     * @param Beneficiary $beneficiary
+     * @return User
+     */
+    public function addBeneficiary(Beneficiary $beneficiary) {
+        $this->beneficiaries[] = $beneficiary;
+
+        return $this;
+    }
+
+    /**
+     * Remove Beneficiary
+     *
+     * @param Beneficiary $beneficiary
+     */
+    public function removeBeneficiary(Beneficiary $beneficiary) {
+        $this->beneficiaries->removeElement($beneficiary);
+    }
+    
+    /**
+     * Get Beneficiaries
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getBeneficiaries() {
+        return $this->beneficiaries;
+    }
 }
