@@ -2,8 +2,7 @@
 
 namespace Betacie\Bundle\MangoPayBundle\Entity;
 
-class Withdrawal
-{
+class Withdrawal {
 
     protected $id;
     protected $mangoPayId;
@@ -19,164 +18,159 @@ class Withdrawal
     protected $isSucceeded;
     protected $beneficiaryId;
     protected $error;
+    protected $user;
+    protected $beneficiary;
 
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
-    public function getMangoPayId()
-    {
+    public function getMangoPayId() {
         return $this->mangoPayId;
     }
 
-    public function setMangoPayId($mangoPayId)
-    {
+    public function setMangoPayId($mangoPayId) {
         $this->mangoPayId = $mangoPayId;
 
         return $this;
     }
 
-    public function getTag()
-    {
+    public function getTag() {
         return $this->tag;
     }
 
-    public function setTag($tag)
-    {
+    public function setTag($tag) {
         $this->tag = $tag;
 
         return $this;
     }
 
-    public function getCreationDate()
-    {
+    public function getCreationDate() {
         return $this->creationDate;
     }
 
-    public function setCreationDate($creationDate)
-    {
+    public function setCreationDate($creationDate) {
         $this->creationDate = $creationDate;
 
         return $this;
     }
 
-    public function getUpdateDate()
-    {
+    public function getUpdateDate() {
         return $this->updateDate;
     }
 
-    public function setUpdateDate($updateDate)
-    {
+    public function setUpdateDate($updateDate) {
         $this->updateDate = $updateDate;
 
         return $this;
     }
 
-    public function getUserId()
-    {
+    public function getUserId() {
         return $this->userId;
     }
 
-    public function setUserId($userId)
-    {
+    public function setUserId($userId) {
         $this->userId = $userId;
 
         return $this;
     }
 
-    public function getWalletId()
-    {
+    public function getWalletId() {
         return $this->walletId;
     }
 
-    public function setWalletId($walletId)
-    {
+    public function setWalletId($walletId) {
         $this->walletId = $walletId;
 
         return $this;
     }
 
-    public function getAmount()
-    {
+    public function getAmount() {
         return $this->amount;
     }
 
-    public function setAmount($amount)
-    {
+    public function setAmount($amount) {
         $this->amount = $amount;
 
         return $this;
     }
 
-    public function getAmountWithoutFees()
-    {
+    public function getAmountWithoutFees() {
         return $this->amountWithoutFees;
     }
 
-    public function setAmountWithoutFees($amountWithoutFees)
-    {
+    public function setAmountWithoutFees($amountWithoutFees) {
         $this->amountWithoutFees = $amountWithoutFees;
 
         return $this;
     }
 
-    public function getClientFeeAmount()
-    {
+    public function getClientFeeAmount() {
         return $this->clientFeeAmount;
     }
 
-    public function setClientFeeAmount($clientFeeAmount)
-    {
+    public function setClientFeeAmount($clientFeeAmount) {
         $this->clientFeeAmount = $clientFeeAmount;
 
         return $this;
     }
 
-    public function isCompleted()
-    {
+    public function isCompleted() {
         return $this->isCompleted;
     }
 
-    public function setIsCompleted($isCompleted)
-    {
+    public function setIsCompleted($isCompleted) {
         $this->isCompleted = $isCompleted;
 
         return $this;
     }
 
-    public function isSucceeded()
-    {
+    public function isSucceeded() {
         return $this->isSucceeded;
     }
 
-    public function setIsSucceeded($isSucceeded)
-    {
+    public function setIsSucceeded($isSucceeded) {
         $this->isSucceeded = $isSucceeded;
 
         return $this;
     }
 
-    public function getBeneficiaryId()
-    {
+    public function getBeneficiaryId() {
         return $this->beneficiaryId;
     }
 
-    public function setBeneficiaryId($beneficiaryId)
-    {
+    public function setBeneficiaryId($beneficiaryId) {
         $this->beneficiaryId = $beneficiaryId;
 
         return $this;
     }
 
-    public function getError()
-    {
+    public function getError() {
         return $this->error;
     }
 
-    public function setError($error)
-    {
+    public function setError($error) {
         $this->error = $error;
+
+        return $this;
+    }
+
+    public function getUser() {
+        return $this->user;
+    }
+
+    public function setUser(User $user) {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    public function getBeneficiary() {
+        return $this->beneficiary;
+    }
+
+    public function setBeneficiary(Beneficiary $beneficiary) {
+        $this->beneficiary = $beneficiary;
 
         return $this;
     }

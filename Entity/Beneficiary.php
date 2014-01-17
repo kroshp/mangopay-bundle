@@ -15,9 +15,11 @@ class Beneficiary {
     protected $bankAccountIBAN;
     protected $bankAccountBIC;
     protected $user;
+    protected $withdrawals;
 
     public function __construct() {
         $this->userId = 0;
+        $this->withdrawals = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     public function getId() {
@@ -122,6 +124,36 @@ class Beneficiary {
         $this->user = $user;
 
         return $this;
+    }
+
+    /**
+     * Add Withdrawal
+     *
+     * @param Withdrawal $withdrawal
+     * @return User
+     */
+    public function addWithdrawal(Withdrawal $withdrawal) {
+        $this->withdrawals[] = $withdrawal;
+
+        return $this;
+    }
+
+    /**
+     * Remove Withdrawal
+     *
+     * @param Withdrawal $withdrawal
+     */
+    public function removeWithdrawal(Withdrawal $withdrawal) {
+        $this->withdrawals->removeElement($withdrawal);
+    }
+
+    /**
+     * Get Withdrawals
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getWithdrawals() {
+        return $this->withdrawals;
     }
 
 }

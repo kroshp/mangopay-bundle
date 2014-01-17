@@ -21,11 +21,13 @@ class User {
     protected $paymentCards;
     protected $immediateContributions;
     protected $beneficiaries;
-
+    protected $withdrawals;
+    
     public function __construct() {
         $this->paymentCards = new \Doctrine\Common\Collections\ArrayCollection();
         $this->immediateContributions = new \Doctrine\Common\Collections\ArrayCollection();
         $this->beneficiaries = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->withdrawals = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     public function getId() {
@@ -249,5 +251,37 @@ class User {
      */
     public function getBeneficiaries() {
         return $this->beneficiaries;
+    }
+    
+    
+    
+    /**
+     * Add Withdrawal
+     *
+     * @param Withdrawal $withdrawal
+     * @return User
+     */
+    public function addWithdrawal(Withdrawal $withdrawal) {
+        $this->withdrawals[] = $withdrawal;
+
+        return $this;
+    }
+
+    /**
+     * Remove Withdrawal
+     *
+     * @param Withdrawal $withdrawal
+     */
+    public function removeWithdrawal(Withdrawal $withdrawal) {
+        $this->withdrawals->removeElement($withdrawal);
+    }
+    
+    /**
+     * Get Withdrawals
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getWithdrawals() {
+        return $this->withdrawals;
     }
 }
