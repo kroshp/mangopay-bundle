@@ -111,21 +111,21 @@ class ImmediateContribution implements ContributionInterface {
         return $this;
     }
 
-    public function isSucceeded() {
+    public function getIsSucceeded() {
         return $this->isSucceeded;
     }
 
-    public function setSucceeded($isSucceeded) {
+    public function setIsucceeded($isSucceeded) {
         $this->isSucceeded = $isSucceeded;
 
         return $this;
     }
 
-    public function isCompleted() {
+    public function getIsCompleted() {
         return $this->isCompleted;
     }
 
-    public function setCompleted($isCompleted) {
+    public function setIsCompleted($isCompleted) {
         $this->isCompleted = $isCompleted;
 
         return $this;

@@ -115,7 +115,7 @@ class Withdrawal {
         return $this;
     }
 
-    public function isCompleted() {
+    public function getIsCompleted() {
         return $this->isCompleted;
     }
 
@@ -125,7 +125,7 @@ class Withdrawal {
         return $this;
     }
 
-    public function isSucceeded() {
+    public function getIsSucceeded() {
         return $this->isSucceeded;
     }
 
